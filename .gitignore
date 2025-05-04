@@ -1,0 +1,32 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Logs
+logs/
+*.log
+*.csv
+*.out
+
+# Env
+.env
+.env.local
+
+# Database dumps
+dump/
+*.mongo
+
+# Editor configs
+.vscode/
+.idea/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# TypeScript
+dist/
+*.tsbuildinfo
