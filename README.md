@@ -67,11 +67,11 @@ Cada backend deve:
 
 ```json
 {
-  "serverId": "main-server-X", // id do servidor
-  "name": "Servidor Grupo_X", // Nome do servidor 
-  "roomCount": 3, // Salas criadas
-  "userCount": 5, // Usuários ativos (dentro das salas)
-  "status": "online" // Status do servidor
+  "serverId": "main-server-X",
+  "name": "Servidor Grupo_X",
+  "roomCount": 3,
+  "userCount": 5,
+  "status": "online"
 }
 ```
 
