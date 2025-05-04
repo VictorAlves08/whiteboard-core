@@ -1,14 +1,20 @@
 {
   "name": "whiteboard-core",
   "version": "1.0.0",
-  "description": "",
+  "description": "Nucleo de monitoramento de servidores distribuidos para sistema de whiteboard.",
   "main": "index.js",
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
   },
-  "keywords": [],
+  "keywords": [
+    "websocket",
+    "monitoring",
+    "distributed-system",
+    "whiteboard"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
