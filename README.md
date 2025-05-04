@@ -60,13 +60,14 @@ Cada backend deve:
 1. Conectar-se via WebSocket:
 
    - Local: `ws://localhost:4000`
-   - Produção: `ws://<seu-subdomínio>.onrender.com`
+   - Produção websocket: `https://whiteboard-core.onrender.com`
+   - Produção REST: `https://whiteboard-core.onrender.com/servers`
 
 2. Enviar a cada 10 segundos:
 
 ```json
 {
-  "serverId": "main-server-001",
+  "serverId": "main-server-X",
   "name": "Servidor Grupo_X",
   "roomCount": 3,
   "userCount": 5,
