@@ -8,8 +8,8 @@ Este serviço `whiteboard-core` atua como um **núcleo de monitoramento** de ser
 
 - Recebe dados de múltiplos servidores via WebSocket
 - Armazena no MongoDB as seguintes informações:
-  - `serverId`, `name`
-  - `roomCount`, `userCount`
+  - `serverId`, `name` (nome do servidor)
+  - `roomCount` (salas criadas), `userCount` (usuários ativos dentro das salas)
   - `status`: online/offline
   - `lastUpdate`: última atualização
 - Atualiza status para `offline` automaticamente se a conexão for encerrada
