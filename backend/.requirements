@@ -1,0 +1,172 @@
+ESPECIFICAÇÕES TÉCNICAS - BACKEND CORE
+
+1. PROTOCOLO WEBSOCKET
+----------------------
+Endpoint: ws://[host]:[port]/instances
+
+Formato das Mensagens:
+{
+  id: string;          // Identificador único da instância
+  name: string;        // Nome amigável da instância
+  roomCount: number;   // Número de salas ativas
+  userCount: number;   // Número total de usuários
+  status: 'online' | 'offline';
+  timestamp: string;   // ISO 8601 format
+}
+
+2. FLUXO DE COMUNICAÇÃO
+-----------------------
+Conexão Inicial:
+{
+  "type": "register",
+  "data": {
+    "id": "whiteboard-instance-1",
+    "name": "Whiteboard Instance 1",
+    "roomCount": 0,
+    "userCount": 0,
+    "status": "online",
+    "timestamp": "2024-05-04T12:00:00Z"
+  }
+}
+
+Atualizações de Status:
+{
+  "type": "update",
+  "data": {
+    "id": "whiteboard-instance-1",
+    "roomCount": 5,
+    "userCount": 10,
+    "status": "online",
+    "timestamp": "2024-05-04T12:00:00Z"
+  }
+}
+
+Heartbeat (30 segundos):
+{
+  "type": "heartbeat",
+  "data": {
+    "id": "whiteboard-instance-1",
+    "timestamp": "2024-05-04T12:00:00Z"
+  }
+}
+
+3. API REST
+----------
+Endpoint: GET /servers
+
+Resposta:
+{
+[
+    {
+      "id": "string",
+      "name": "string",
+      "roomCount": "number",
+      "userCount": "number",
+      "status": "online" | "offline",
+      "lastUpdate": "string"  // ISO 8601
+    }
+  ],
+
+}
+
+4. TRATAMENTO DE ERROS
+---------------------
+Códigos de Erro:
+- INVALID_DATA
+- DUPLICATE_ID
+- UNAUTHORIZED
+- INTERNAL_ERROR
+
+Formato de Erro:
+{
+  "type": "error",
+  "code": "string",
+  "message": "string"
+}
+
+5. VALIDAÇÕES
+------------
+Dados Obrigatórios:
+- id: string, único, não vazio
+- name: string, não vazio
+- roomCount: number, >= 0
+- userCount: number, >= 0
+- status: 'online' | 'offline'
+- timestamp: string, formato ISO 8601 válido
+
+6. TIMEOUTS E RECONEXÃO
+----------------------
+- Timeout de conexão: 10 segundos
+- Intervalo de reconexão: 5 segundos
+- Máximo de tentativas: 5
+- Timeout de inatividade: 30 segundos
+
+7. ARMAZENAMENTO DE DADOS
+------------------------
+Estrutura:
+{
+  [id: string]: {
+    id: string;
+    name: string;
+    roomCount: number;
+    userCount: number;
+    status: 'online' | 'offline';
+    lastUpdate: string;
+    lastHeartbeat: string;
+    socket: WebSocket;
+  }
+}
+
+8. LOGS
+-------
+Eventos para Log:
+- Conexão de nova instância
+- Desconexão de instância
+- Atualizações de status
+- Erros de validação
+- Erros de conexão
+- Heartbeats perdidos
+
+9. SEGURANÇA
+-----------
+
+Rate Limiting:
+- Máximo: 10 atualizações/segundo por instância
+- Máximo: 100 conexões simultâneas
+
+Validação de Dados:
+- Sanitização de inputs
+- Validação de tipos
+- Verificação de limites numéricos
+
+10. PERFORMANCE
+--------------
+Otimizações:
+- Cache de resposta /servers (1 segundo)
+- Compressão de mensagens WebSocket
+- Limpeza periódica de instâncias offline
+
+Métricas:
+- Latência de conexão
+- Taxa de atualizações
+- Número de conexões ativas
+- Uso de memória
+
+11. DOCUMENTAÇÃO
+---------------
+API WebSocket:
+- Formato das mensagens
+- Exemplos de uso
+- Tratamento de erros
+- Protocolo de reconexão
+
+API REST:
+- Documentação da rota /servers
+- Exemplos de resposta
+- Códigos de erro
+
+
+Testes de Performance:
+- Múltiplas conexões simultâneas
+- Taxa de atualizações
+- Uso de recursos

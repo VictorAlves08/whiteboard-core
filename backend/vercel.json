@@ -1,0 +1,19 @@
+{
+    "version": 2,
+    "builds": [
+        {
+            "src": "src/app.ts",
+            "use": "@vercel/node"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/socket.io/(.*)",
+            "dest": "src/app.ts"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "src/app.ts"
+        }
+    ]
+}
