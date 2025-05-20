@@ -2,8 +2,6 @@
 
 O `whiteboard-core` é um serviço de monitoramento de servidores backend que participam de um sistema de whiteboard colaborativo e distribuído. Ele recebe dados via **WebSocket**, armazena em um **MongoDB**, e expõe uma **API REST** para consulta dos servidores ativos.
 
-## _Pronto para conectar o seu backend ao whiteboard-core? Siga os exemplos abaixo e comece a monitorar seus servidores em tempo real!_
-
 ## 🌐 Ambiente de Produção
 
 Este guia apresenta como conectar seu servidor backend ao `whiteboard-core` **em produção**.
@@ -31,9 +29,9 @@ Seu servidor deve se conectar via WebSocket e enviar um JSON a cada 10 segundos 
 }
 ```
 
-### ⚠️ Considerações
+### ⚠️ Considerações Importantes!
 
-- A hospedagem Render pode estar inativa inicialmente.Verifique o status: `https://whiteboard-core.onrender.com/servers`
+- A hospedagem Render pode estar inativa inicialmente. Verifique o status: `https://whiteboard-core.onrender.com/servers`
 - É recomendável implementar **reconexão automática** com retry a cada **30 segundos**.
 - O envio dos dados deve ser repetido a cada **10 segundos** enquanto o servidor estiver online.
 
@@ -201,11 +199,5 @@ print("[✓] Servidores conectados:", res.json())
 - Mantenha o `serverId` como identificador **único e constante**.
 - Use `status: "offline"` se seu backend estiver desconectando ou sendo reiniciado.
 - Implemente reconexão com `exponential backoff` em ambientes instáveis.
-
----
-
-## 📄 Licença
-
-Este projeto segue os termos da licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
 
 ---
