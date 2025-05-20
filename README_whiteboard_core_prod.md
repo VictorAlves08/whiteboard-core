@@ -1,4 +1,4 @@
-# 🧠 whiteboard-core
+# 🧠 whiteboard-core (Ambiente de Produção)
 
 O `whiteboard-core` é um serviço de monitoramento de servidores backend que participam de um sistema de whiteboard colaborativo e distribuído. Ele recebe dados via **WebSocket**, armazena em um **MongoDB**, e expõe uma **API REST** para consulta dos servidores ativos.
 

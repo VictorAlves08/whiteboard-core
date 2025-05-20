@@ -1,6 +1,6 @@
 # 🧠 Whiteboard Core
 
-Este serviço `whiteboard-core` atua como um **núcleo de monitoramento** de servidores backend que participam de um sistema de whiteboard colaborativo e distribuído. Ele coleta informações via **WebSocket**, armazena em **MongoDB**, e expõe uma **API REST** para consulta.
+O `whiteboard-core` atua como um **núcleo de monitoramento** de servidores backend que participam de um sistema de whiteboard colaborativo e distribuído. Ele coleta informações via **WebSocket**, armazena em **MongoDB**, e expõe uma **API REST** para consulta.
 
 ---
 
@@ -25,64 +25,26 @@ Este serviço `whiteboard-core` atua como um **núcleo de monitoramento** de ser
 
 ---
 
-## 📦 Instalação Local
+## ▶️ Como Rodar o Projeto
 
-```bash
-git clone https://github.com/VictorAlves08/whiteboard-app.git
-cd whiteboard-core
-npm install
-```
+### 🌐 Em Produção
 
-Crie um arquivo `.env` com:
+Consulte a documentação completa aqui:  
+📄 [Guia de Produção](https://github.com/VictorAlves08/whiteboard-core/blob/main/README_whiteboard_core_prod.md)
 
-```env
-MONGODB_URI=mongodb+srv://<usuario>:<senha>@clusterwhiteboard.mongodb.net/whiteboard-core?retryWrites=true&w=majority
-PORT=4000
-```
+### 🖥️ Localmente
 
-Inicie o projeto:
-
-```bash
-npm run dev
-```
-
-Acesse:
-
-- WebSocket: `ws://localhost:4000`
-- REST API: `http://localhost:4000/servers`
-
----
-
-## 🌐 Conectar um Backend ao Core
-
-Cada backend deve:
-
-1. Conectar-se via WebSocket:
-
-   - Local: `ws://localhost:4000`
-   - Produção websocket: `https://whiteboard-core.onrender.com`
-   - Produção REST: `https://whiteboard-core.onrender.com/servers`
-
-2. Enviar a cada 10 segundos:
-
-```json
-{
-  "serverId": "main-server-X",
-  "name": "Servidor Grupo_X",
-  "roomCount": 3,
-  "userCount": 5,
-  "status": "online"
-}
-```
-
-3. Ao desconectar, o core marcará automaticamente:
-   - `status`: `"offline"`
-   - `userCount`: `0`
+Consulte a documentação completa aqui:  
+📄 [Guia Local](https://github.com/VictorAlves08/whiteboard-core/blob/main/README_whiteboard_core_local.md)
 
 ---
 
 ## 📡 Rota REST
 
-- `GET /servers`: lista os servidores conectados/desconectados com todas as informações.
+- `GET /servers`: lista os servidores conectados/desconectados com todas as informações armazenadas no MongoDB. Acesse: https://whiteboard-core.onrender.com/servers
 
 ---
+
+## 📄 Licença
+
+Este projeto está licenciado sob os termos da **MIT License**.
