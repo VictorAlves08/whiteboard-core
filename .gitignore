@@ -30,3 +30,6 @@ Thumbs.db
 # TypeScript
 dist/
 *.tsbuildinfo
+
+# kubernetes
+.k8s/
