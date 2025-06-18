@@ -32,4 +32,5 @@ dist/
 *.tsbuildinfo
 
 # kubernetes
+k8s/
 .k8s/
